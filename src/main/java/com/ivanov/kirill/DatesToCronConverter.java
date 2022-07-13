@@ -2,10 +2,9 @@ package com.ivanov.kirill;
 
 import com.ivanov.kirill.exceptions.DatesToCronConvertException;
 import com.ivanov.kirill.utils.CronGenerator;
+import com.ivanov.kirill.utils.DateTime;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 
 public class DatesToCronConverter {
@@ -24,10 +23,11 @@ public class DatesToCronConverter {
 
         int maxDatesInCron = 0;
         ArrayList<Integer> dateTimeIndexes = null;
-        for (int mask = 1; mask < (1 << dateTimeArray.size()); mask++){
+        for (int mask = 1; mask < (1 << dateTimeArray.size()); mask++) {
             ArrayList<Integer> indexes = extractIndexesFromMask(mask, dateTimeArray.size());
             ArrayList<DateTime> chosenDates = new ArrayList<>();
-            dateTimeIndexes.forEach(i -> chosenDates.add(dateTimeArray.get(i)));
+            indexes.forEach(i -> chosenDates.add(dateTimeArray.get(i)));
+
             if (indexes.size() > maxDatesInCron && new CronGenerator(chosenDates).validate(indexes.size())) {
                 maxDatesInCron = indexes.size();
                 dateTimeIndexes = indexes;

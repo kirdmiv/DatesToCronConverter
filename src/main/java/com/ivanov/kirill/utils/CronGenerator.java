@@ -1,7 +1,5 @@
 package com.ivanov.kirill.utils;
 
-import com.ivanov.kirill.DateTime;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -9,11 +7,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CronGenerator {
-    private Set<Integer> seconds = new HashSet<>();
-    private Set<Integer> minutes = new HashSet<>();
-    private Set<Integer> hours = new HashSet<>();
-    private Set<Integer> days = new HashSet<>();
-    private Set<Integer> months = new HashSet<>();
+    private final Set<Integer> seconds = new HashSet<>();
+    private final Set<Integer> minutes = new HashSet<>();
+    private final Set<Integer> hours = new HashSet<>();
+    private final Set<Integer> days = new HashSet<>();
+    private final Set<Integer> months = new HashSet<>();
 
     public CronGenerator(ArrayList<DateTime> dates) {
         dates.forEach(dateTime -> {
@@ -31,10 +29,10 @@ public class CronGenerator {
                 optimizeSet(seconds, 0, 59),
                 optimizeSet(minutes, 0, 59),
                 optimizeSet(hours, 0, 23),
-                optimizeSet(days, 1,31),
+                optimizeSet(days, 1, 31),
                 optimizeSet(months, 1, 12),
                 "?"
-                );
+        );
     }
 
     private static String optimizeSet(Set<Integer> values, int min, int max) {
@@ -49,8 +47,8 @@ public class CronGenerator {
             return "*";
 
         /*
-        * Checking if it is possible to wrap content into range with step
-        */
+         * Checking if it is possible to wrap content into range with step
+         */
         int start = sortedValues.get(0);
         int end = sortedValues.get(sortedValues.size() - 1);
         int step = sortedValues.get(1) - sortedValues.get(0);
@@ -64,11 +62,11 @@ public class CronGenerator {
     private static String optimizeRange(int start, int end, int step, int min, int max) {
         String result = "";
         if (start == min && end + step > max)
-             result += '*';
+            result += '*';
         else if (end + step > max && step > 1)
             result += String.valueOf(start);
         else
-            result += String.valueOf(start) + '-' + String.valueOf(end);
+            result += String.valueOf(start) + '-' + end;
 
         if (step > 1)
             result += '/' + String.valueOf(step);

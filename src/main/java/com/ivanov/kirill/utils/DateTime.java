@@ -1,14 +1,13 @@
-package com.ivanov.kirill;
+package com.ivanov.kirill.utils;
 
 public class DateTime {
-    private int year;
-    private int month;
-    private int dayOfMonth;
-    private int hour;
-    private int minute;
-    private int second;
+    private final int month;
+    private final int dayOfMonth;
+    private final int hour;
+    private final int minute;
+    private final int second;
 
-    DateTime(String dateTime) {
+    public DateTime(String dateTime) {
         String[] dateTimeStringArray = dateTime
                 .replaceAll("\\D", " ")
                 .split(" ");
@@ -17,7 +16,6 @@ public class DateTime {
             dateTimeIntArray[i] = Integer.parseInt(dateTimeStringArray[i]);
         }
 
-        year = dateTimeIntArray[0];
         month = dateTimeIntArray[1];
         dayOfMonth = dateTimeIntArray[2];
         hour = dateTimeIntArray[3];
@@ -35,51 +33,23 @@ public class DateTime {
         return hour < 24 && minute < 60 && second < 60;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     public int getMonth() {
         return month;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
     }
 
     public int getDayOfMonth() {
         return dayOfMonth;
     }
 
-    public void setDayOfMonth(int dayOfMonth) {
-        this.dayOfMonth = dayOfMonth;
-    }
-
     public int getHour() {
         return hour;
-    }
-
-    public void setHour(int hour) {
-        this.hour = hour;
     }
 
     public int getMinute() {
         return minute;
     }
 
-    public void setMinute(int minute) {
-        this.minute = minute;
-    }
-
     public int getSecond() {
         return second;
-    }
-
-    public void setSecond(int second) {
-        this.second = second;
     }
 }
