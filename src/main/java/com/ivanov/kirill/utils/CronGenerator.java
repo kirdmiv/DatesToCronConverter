@@ -82,4 +82,8 @@ public class CronGenerator {
         }
         return true;
     }
+
+    public Boolean validate(int datesNumber) {
+        return seconds.size() * minutes.size() * hours.size() * days.size() * months.size() == datesNumber;
+    }
 }

@@ -26,7 +26,9 @@ public class DatesToCronConverter {
         ArrayList<Integer> dateTimeIndexes = null;
         for (int mask = 1; mask < (1 << dateTimeArray.size()); mask++){
             ArrayList<Integer> indexes = extractIndexesFromMask(mask, dateTimeArray.size());
-            if (indexes.size() > maxDatesInCron && checkDates(dateTimeArray, indexes)) {
+            ArrayList<DateTime> chosenDates = new ArrayList<>();
+            dateTimeIndexes.forEach(i -> chosenDates.add(dateTimeArray.get(i)));
+            if (indexes.size() > maxDatesInCron && new CronGenerator(chosenDates).validate(indexes.size())) {
                 maxDatesInCron = indexes.size();
                 dateTimeIndexes = indexes;
             }
@@ -39,27 +41,6 @@ public class DatesToCronConverter {
         dateTimeIndexes.forEach(i -> chosenDates.add(dateTimeArray.get(i)));
 
         return new CronGenerator(chosenDates).generate();
-    }
-
-    private static Boolean checkDates(ArrayList<DateTime> dateTimeArray, ArrayList<Integer> indexes) {
-        Set<Integer> seconds = new HashSet<>();
-        Set<Integer> minutes = new HashSet<>();
-        Set<Integer> hours = new HashSet<>();
-        Set<Integer> days = new HashSet<>();
-        Set<Integer> months = new HashSet<>();
-
-        indexes.forEach(i -> {
-            DateTime dateTime = dateTimeArray.get(i);
-            seconds.add(dateTime.getSecond());
-            minutes.add(dateTime.getMinute());
-            hours.add(dateTime.getHour());
-            days.add(dateTime.getDayOfMonth());
-            months.add(dateTime.getMonth());
-        });
-
-        int totalCronTabs = seconds.size() * minutes.size() * hours.size() * days.size() * months.size();
-
-        return totalCronTabs == indexes.size();
     }
 
     private static Boolean check(int mask, int position) {
