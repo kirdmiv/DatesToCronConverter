@@ -1,11 +1,8 @@
 package com.ivanov.kirill;
 
 import com.ivanov.kirill.exceptions.DatesToCronConvertException;
-import com.ivanov.kirill.utils.CronGenerator;
-import com.ivanov.kirill.utils.DateTime;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
