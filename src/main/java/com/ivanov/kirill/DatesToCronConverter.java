@@ -6,11 +6,16 @@ import com.ivanov.kirill.utils.DateTime;
 
 import java.util.ArrayList;
 
-
 public class DatesToCronConverter {
     public DatesToCronConverter() {
     }
 
+    /**
+     * Converts given list of dates into cron expression.
+     * @param dates given dates
+     * @return cron expression
+     * @throws DatesToCronConvertException if dates are in invalid format or there are not enough dates to generate cron.
+     */
     public static String convert(Iterable<String> dates) throws DatesToCronConvertException {
         ArrayList<DateTime> dateTimeArray = new ArrayList<>();
 
@@ -56,6 +61,10 @@ public class DatesToCronConverter {
         return indexes;
     }
 
+    /**
+     * Author info.
+     * @return info
+     */
     public static String getImplementationInfo() {
         String fio = "Ivanov Kirill Dmitrievich";
         String className = DatesToCronConverter.class.getName();

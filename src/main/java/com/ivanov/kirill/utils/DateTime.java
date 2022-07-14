@@ -7,6 +7,10 @@ public class DateTime {
     private final int minute;
     private final int second;
 
+    /**
+     * Simple DateTime model. Parses date in “yyyy-MM-dd'T’HH:mm:ss” format.
+     * @param dateTime string representation of date and time.
+     */
     public DateTime(String dateTime) {
         String[] dateTimeStringArray = dateTime
                 .replaceAll("\\D", " ")
@@ -23,6 +27,10 @@ public class DateTime {
         second = dateTimeIntArray[5];
     }
 
+    /**
+     * Simple check if date and time are in valid bounds.
+     * @return true if valid
+     */
     public Boolean validate() {
         if (1 > month || month > 12)
             return false;
