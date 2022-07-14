@@ -12,6 +12,7 @@ public class CronGenerator {
     private final Set<Integer> hours = new HashSet<>();
     private final Set<Integer> days = new HashSet<>();
     private final Set<Integer> months = new HashSet<>();
+    private final int amountOfDates;
 
     /**
      * Generates cron from given dates. Aimed to produce readable cron.
@@ -25,6 +26,7 @@ public class CronGenerator {
             days.add(dateTime.getDayOfMonth());
             months.add(dateTime.getMonth());
         });
+        amountOfDates = dates.size();
     }
 
     /**
@@ -91,10 +93,9 @@ public class CronGenerator {
 
     /**
      * Checks if it is possible to generate cron expression.
-     * @param datesNumber
      * @return true if it is possible to generate cron expression.
      */
-    public Boolean validate(int datesNumber) {
-        return seconds.size() * minutes.size() * hours.size() * days.size() * months.size() == datesNumber;
+    public Boolean validate() {
+        return seconds.size() * minutes.size() * hours.size() * days.size() * months.size() == amountOfDates;
     }
 }

@@ -58,7 +58,7 @@ class CronGeneratorTest {
     @Test
     void validate() {
         // correct data
-        assertTrue(new CronGenerator(new ArrayList<>(Arrays.asList(data1))).validate(8));
+        assertTrue(new CronGenerator(new ArrayList<>(Arrays.asList(data1))).validate());
 
         // incorrect data
         DateTime[] data2 = {
@@ -69,6 +69,6 @@ class CronGeneratorTest {
                 new DateTime("2022-01-26T08:30:00"),
                 new DateTime("2022-01-26T09:30:00")
         };
-        assertFalse(new CronGenerator(new ArrayList<>(Arrays.asList(data2))).validate(6));
+        assertFalse(new CronGenerator(new ArrayList<>(Arrays.asList(data2))).validate());
     }
 }

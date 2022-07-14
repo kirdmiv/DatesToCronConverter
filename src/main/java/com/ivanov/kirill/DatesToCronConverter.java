@@ -28,7 +28,7 @@ public class DatesToCronConverter {
             ArrayList<DateTime> chosenDates = new ArrayList<>();
             indexes.forEach(i -> chosenDates.add(dateTimeArray.get(i)));
 
-            if (indexes.size() > maxDatesInCron && new CronGenerator(chosenDates).validate(indexes.size())) {
+            if (indexes.size() > maxDatesInCron && new CronGenerator(chosenDates).validate()) {
                 maxDatesInCron = indexes.size();
                 dateTimeIndexes = indexes;
             }
