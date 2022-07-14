@@ -63,4 +63,16 @@ class DateTimeTest {
         DateTime goodDateTime = new DateTime("2022-11-23T22:30:00");
         assertTrue(goodDateTime.validate());
     }
+
+    @Test
+    void testValidateFormat() {
+        DateTime badDateTime = new DateTime("2022-15-2322:99:00");
+        assertFalse(badDateTime.validate());
+
+        DateTime badDateTime2 = new DateTime("2022-15T22:99:00");
+        assertFalse(badDateTime2.validate());
+
+        DateTime badDateTime3 = new DateTime("2022-15-23T22:99");
+        assertFalse(badDateTime3.validate());
+    }
 }

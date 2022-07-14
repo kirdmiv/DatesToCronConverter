@@ -12,6 +12,15 @@ public class DateTime {
      * @param dateTime string representation of date and time.
      */
     public DateTime(String dateTime) {
+        if (!dateTime.matches("\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}")) {
+            month = 1000;
+            dayOfMonth = 1000;
+            hour = 1000;
+            minute = 1000;
+            second = 1000;
+            return;
+        }
+
         String[] dateTimeStringArray = dateTime
                 .replaceAll("\\D", " ")
                 .split(" ");
