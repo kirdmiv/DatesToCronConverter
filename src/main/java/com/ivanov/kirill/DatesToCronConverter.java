@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 
 public class DatesToCronConverter {
-    DatesToCronConverter() {
+    public DatesToCronConverter() {
     }
 
     public static String convert(Iterable<String> dates) throws DatesToCronConvertException {
