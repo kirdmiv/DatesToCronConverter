@@ -8,7 +8,7 @@ public class DateTime {
     private final int second;
 
     /**
-     * Simple DateTime model. Parses date in “yyyy-MM-dd'T’HH:mm:ss” format.
+     * Simple DateTime model. Parses date in "yyyy-MM-dd'T'HH:mm:ss" format.
      * @param dateTime string representation of date and time.
      */
     public DateTime(String dateTime) {

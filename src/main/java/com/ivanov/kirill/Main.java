@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        DatesToCronConverter converter = new DatesToCronConverter();
         System.out.println(DatesToCronConverter.getImplementationInfo());
 //        List<String> dates = List.of(
 //                "2022-01-25T08:00:00",
