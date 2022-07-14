@@ -59,7 +59,7 @@ public class DatesToCronConverter {
     public static String getImplementationInfo() {
         String fio = "Ivanov Kirill Dmitrievich";
         String className = DatesToCronConverter.class.getName();
-        String packageName = DatesToCronConverter.class.getPackageName();
+        String packageName = DatesToCronConverter.class.getPackage().getName();
         String githubLink = "https://github.com/kirdmiv";
         return String.join("\n", fio, className, packageName, githubLink);
     }
