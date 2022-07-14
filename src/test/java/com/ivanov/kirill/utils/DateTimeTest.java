@@ -16,7 +16,7 @@ class DateTimeTest {
 
         // correct month
         for (int month = 1; month < 13; month++) {
-            DateTime goodMonth = new DateTime("2022-" + month + "-07T08:00:00");
+            DateTime goodMonth = new DateTime("2022-" + String.format("%02d", month) + "-07T08:00:00");
             assertTrue(goodMonth.validate());
         }
     }
@@ -31,7 +31,7 @@ class DateTimeTest {
 
         // correct day
         for (int day = 1; day < 32; day++) {
-            DateTime goodDay = new DateTime("2022-11-" + day + "T08:00:00");
+            DateTime goodDay = new DateTime("2022-11-" + String.format("%02d", day) + "T08:00:00");
             assertTrue(goodDay.validate());
         }
     }
